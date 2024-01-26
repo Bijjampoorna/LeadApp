@@ -10,6 +10,7 @@ pipeline{
                   sh 'mvn -version'
                   sh "mvn test"
               }
+          }
               
             stage('test'){
                 tools {

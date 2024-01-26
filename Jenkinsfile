@@ -33,11 +33,18 @@ pipeline{
             }
             stage('deployment'){
                 steps {
-                deploy adapters: [tomcat9(credentialsId: 'Tomcat_Credentials',path: '',url: 'http://15.206.80.117:8080/')],contextPath: 'LeadApp',war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'Tomcat_Credentials',path: '',url: 'http://15.206.80.117:8080/')],contextPath: 'Pipeline_LeadApp',war: '**/*.war'
                 }
             }
           }
-          
+           post {
+		success {
+		          	echo 'job was built successfully'
+		        }
+		failure {
+			        echo 'job was not build..it was failed'
+		        }
+	        }
           
       }
     
